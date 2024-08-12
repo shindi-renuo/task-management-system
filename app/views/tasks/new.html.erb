@@ -1,0 +1,27 @@
+<h2 class="text-2xl font-semibold mb-6">Create a Task</h2>
+
+<%= form_with model: @task, url: tasks_path, method: :post, html: { class: 'space-y-4 mb-20' } do |f| %>
+  <div class="field mb-4">
+    <%= f.label :title, class: 'block text-sm font-medium text-gray-700' %>
+    <%= f.text_field :title, autofocus: true, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+  </div>
+
+  <div class="field mb-4">
+    <%= f.label :description, class: 'block text-sm font-medium text-gray-700' %>
+    <%= f.text_area :description, rows: 4, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+  </div>
+
+  <div class="field mb-4">
+    <%= f.label :due_date, class: 'block text-sm font-medium text-gray-700' %>
+    <%= f.datetime_select :due_date, class: 'mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm' %>
+  </div>
+
+  <div class="flex items-center field mb-4">
+    <%= f.check_box :completed, class: 'h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded' %>
+    <%= f.label :completed, class: 'ml-2 block text-sm text-gray-900' %>
+  </div>
+
+  <div class="actions mt-6">
+    <%= f.submit "Create Task", class: 'inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+  </div>
+<% end %>
