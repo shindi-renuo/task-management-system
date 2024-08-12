@@ -1,9 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user! # Ensure user is authenticated before accessing these actions
-
-  def show
-    @tasks = current_user.tasks
-  end
+  before_action :authenticate_user!
 
   def new
     @task = current_user.tasks.build
@@ -16,6 +12,22 @@ class TasksController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @tasks = current_user.tasks.all
+  end
+
+  def mark_as_completed
+    @task = Task.find(params[:id])
+    @task.update(completed: true)
+    redirect_to root_path, notice: 'Task was marked as completed.'
+  end
+
+  def mark_as_pending
+    @task = Task.find(params[:id])
+    @task.update(completed: false)
+    redirect_to root_path, notice: 'Task was marked as pending.'
   end
 
   private

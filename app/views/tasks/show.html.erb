@@ -1,7 +1,9 @@
-<h1 class="text-2xl font-bold mb-6">Task List</h1>
+<h1 class="text-2xl font-bold mb-2">Task List</h1>
 
 <%= link_to "Create new Task", new_task_path, class: "bg-blue-500 hover:bg-blue-600 transition duration-300 linear p-2 rounded-xl text-white w-fit" %>
 
-<% @tasks.each do |task| %>
-  <%= render partial: 'shared/task_card', locals: { task: task } %>
-<% end %>
+<ul class="space-y-3 mt-3">
+    <% @tasks.each do |task| %>
+        <%= render partial: 'shared/task_card', locals: { task: task } %>
+    <% end %>
+</ul>
