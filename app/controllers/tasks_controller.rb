@@ -30,11 +30,18 @@ class TasksController < ApplicationController
     redirect_to root_path, notice: 'Task was marked as pending.'
   end
 
+  def update
+    @task = Task.find(params[:id])
+    puts params[:description]
+    if @task.update(title: params[:title], description: params[:description])
+      redirect_to root_path, notice: 'Task was successfully updated.'
+    else
+      redirect_to root_path, notice: 'Something went wrong while updating the task.'
+    end
+  end
+
   def remove
     @task = Task.find(params[:id])
-
-    puts @task
-    
     if @task.destroy
       redirect_to root_path, notice: 'Task was removed successfully.'
     else

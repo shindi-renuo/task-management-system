@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   end
 
   root "tasks#show"
-  delete "tasks/:id" => "tasks#remove" 
+  delete "tasks/:id" => "tasks#remove", as: :remove_task
+  patch "tasks/:id" => "tasks#update", as: :save_task
 
   resources :tasks, only: [:new, :create, :show] do
     member do
