@@ -1,24 +1,5 @@
-# README
+# Task Management System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple task management system written in Ruby with the Rails framework.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It supports basic CRUD-operations such as creating, deleting, updating and reading tasks.
