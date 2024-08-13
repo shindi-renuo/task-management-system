@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    get ":user/update" => "devise/registrations#edit", as: :update_user
+  end
+
   root "tasks#show"
+  delete "tasks/:id" => "tasks#remove" 
 
   resources :tasks, only: [:new, :create, :show] do
     member do
@@ -10,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   # Profile path
-  get "profile" => "profile#show"
+  get "user/profile" => "profile#show", as: :user_profile
 
   # Health check route
   get "up" => "rails/health#show", as: :rails_health_check
